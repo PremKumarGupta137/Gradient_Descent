@@ -34,17 +34,46 @@ x = np.array([1, 2, 3, 4, 5])
 y = np.array([5, 7, 9, 11, 13])
 
 ##output :
-m = 0.0935, b = 0.0320, cost = 18.6667, iteration = 0
-m = 0.1769, b = 0.0604, cost = 12.0941, iteration = 1
-m = 0.2581, b = 0.0873, cost = 8.1083, iteration = 2
-m = 0.3373, b = 0.1130, cost = 5.7282, iteration = 3
-m = 0.4145, b = 0.1375, cost = 4.2442, iteration = 4
-m = 0.4901, b = 0.1609, cost = 3.4267, iteration = 5
-m = 0.5642, b = 0.1832, cost = 2.5371, iteration = 6
-m = 0.6369, b = 0.2045, cost = 1.6116, iteration = 7
-m = 0.7083, b = 0.2248, cost = 0.7325, iteration = 8
-m = 0.7786, b = 0.2440, cost = 0.0222, iteration = 9
-m = 0.8480, b = 0.2623, cost = 0.0000, iteration = 10
+
+
+
+
+
+
+
+
+Selection deleted
+import numpy as np
+
+def gradient_descent(x, y):
+    m_curr = b_curr = 0
+    iterations = 10
+    n = len(x)
+    learning_rate = 0.001
+    
+    for i in range(iterations):
+        y_predicted = m_curr * x + b_curr
+        cost = (1 / n) * sum([val**2 for val in (y - y_predicted)])
+        md = -(2 / n) * sum(x * (y - y_predicted))
+        bd = -(2 / n) * sum(y - y_predicted)
+        m_curr = m_curr - learning_rate * md
+        b_curr = b_curr - learning_rate * bd
+        print(f"m = {m_curr}, b = {b_curr}, cost = {cost}, iteration = {i}")
+
+x = np.array([1, 2, 3,4,5])
+y = np.array([5,7,9,11,13])
+
+gradient_descent(x, y)
+m = 0.062, b = 0.018000000000000002, cost = 89.0, iteration = 0
+m = 0.122528, b = 0.035592000000000006, cost = 84.881304, iteration = 1
+m = 0.181618832, b = 0.052785648000000004, cost = 80.955185108544, iteration = 2
+m = 0.239306503808, b = 0.069590363712, cost = 77.21263768455901, iteration = 3
+m = 0.29562421854195203, b = 0.086015343961728, cost = 73.64507722605434, iteration = 4
+m = 0.35060439367025875, b = 0.10206956796255283, cost = 70.2443206760065, iteration = 5
+m = 0.40427867960173774, b = 0.11776180246460617, cost = 67.00256764921804, iteration = 6
+m = 0.4566779778357119, b = 0.13310060678206653, cost = 63.912382537082294, iteration = 7
+m = 0.5078324586826338, b = 0.14809433770148814, cost = 60.966677449199324, iteration = 8
+m = 0.5577715785654069, b = 0.16275115427398937, cost = 58.15869595270883, iteration = 9
 
 After running for 10 iterations, the gradient descent algorithm converges:
 
